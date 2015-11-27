@@ -79,7 +79,7 @@ class CamaleonCms::PostDecorator < CamaleonCms::ApplicationDecorator
         if ptype.manage_categories?
           cat = object.categories.first.decorate rescue ptype.default_category.decorate
           args[:category_id] = cat.id
-          args[:title] = cat.the_title.parameterize
+          args[:title] = cat.the_slug.parameterize
         else
           p_url_format = "post"
           l = ""
@@ -92,7 +92,7 @@ class CamaleonCms::PostDecorator < CamaleonCms::ApplicationDecorator
           cat = object.categories.first.decorate rescue ptype.default_category.decorate
           args[:post_type_title] = ptype.the_title.parameterize
           args[:category_id] = cat.id
-          args[:title] = cat.the_title.parameterize
+          args[:title] = cat.the_slug.parameterize
         else
           p_url_format = "post"
           l = ""
