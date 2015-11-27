@@ -20,9 +20,9 @@ module CamaleonCms::Frontend::SeoHelper
   # create seo attributes with options + default attributes
   def cama_build_seo(options)
     options[:image] = options[:image] || current_site.get_option("screenshot", current_site.the_logo)
-    options[:title] = I18n.transliterate(is_home? ? current_site.the_title : "#{current_site.the_title} | #{options[:title]}")
-    options[:description] = I18n.transliterate(is_home? ? current_site.the_option("seo_description") : options[:description].to_s)
-    options[:keywords] = I18n.transliterate(is_home? ? current_site.the_option("keywords") : options[:keywords].to_s)
+    options[:title] = is_home? ? current_site.the_title : "#{current_site.the_title} | #{options[:title]}"
+    options[:description] = is_home? ? current_site.the_option("seo_description") : options[:description].to_s
+    options[:keywords] = is_home? ? current_site.the_option("keywords") : options[:keywords].to_s
     options[:url] = request.original_url
     s = {
       title: options[:title],
